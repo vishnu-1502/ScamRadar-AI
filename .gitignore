@@ -216,3 +216,22 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Frontend dependencies
+frontend/node_modules/
+
+# Frontend build output
+frontend/dist/
+
+# ML generated/cache files
+ml/__pycache__/
+ml/**/__pycache__/
+
+# Local environment files
+.env
+*.env
+
+# OS files
+.DS_Store
+Thumbs.db
+# Large ML model - kept locally, not uploaded to GitHub
+ml/models/url_model.pkl
