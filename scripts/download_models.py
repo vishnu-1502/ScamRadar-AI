@@ -4,7 +4,7 @@ import urllib.request
 
 BASE_URL = (
     "https://github.com/vishnu-1502/ScamRadar-AI/"
-    "releases/download/v1.0.0/"
+    "releases/download/v1.0.1/"
 )
 
 MODEL_FILES = [
