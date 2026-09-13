@@ -233,5 +233,11 @@ ml/**/__pycache__/
 # OS files
 .DS_Store
 Thumbs.db
-# Large ML model - kept locally, not uploaded to GitHub
-ml/models/url_model.pkl
+# URL model test/backup files
+ml/models/url_model_backup.pkl
+ml/models/url_model_small_test.pkl
+ml/models/url_model_tiny_test.pkl
+ml/models/url_label_encoder_small_test.pkl
+ml/models/url_label_encoder_tiny_test.pkl
+ml/models/url_feature_names_small_test.pkl
+ml/models/url_feature_names_tiny_test.pkl
