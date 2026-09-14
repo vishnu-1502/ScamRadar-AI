@@ -14,6 +14,9 @@ import {
 
 import { saveScan } from "../utils/scanHistory";
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:5000";
+
 function EmailScanner() {
   const [email, setEmail] = useState("");
   const [isScanning, setIsScanning] = useState(false);
@@ -39,7 +42,7 @@ function EmailScanner() {
       // ==========================
 
       const response = await fetch(
-        "http://127.0.0.1:5000/scan-email",
+        `${API_BASE_URL}/scan-email`,
         {
           method: "POST",
 
@@ -255,7 +258,6 @@ function EmailScanner() {
 
       </nav>
 
-
       {/* ================= MAIN CONTENT ================= */}
 
       <main className="scanner-container">
@@ -296,7 +298,6 @@ function EmailScanner() {
 
         </section>
 
-
         {/* ================= INPUT CARD ================= */}
 
         <section className="url-input-card">
@@ -325,7 +326,6 @@ function EmailScanner() {
             </div>
 
           </div>
-
 
           {/* ================= EMAIL INPUT ================= */}
 
@@ -374,7 +374,6 @@ function EmailScanner() {
 
           </div>
 
-
           <div className="input-hint">
 
             <span>
@@ -394,7 +393,6 @@ function EmailScanner() {
           </div>
 
         </section>
-
 
         {/* ================= RESULT CARD ================= */}
 
@@ -462,7 +460,6 @@ function EmailScanner() {
 
             </div>
 
-
             {result ? (
 
               <span
@@ -501,7 +498,6 @@ function EmailScanner() {
 
           </div>
 
-
           {/* ================= ERROR ================= */}
 
           {error && (
@@ -517,7 +513,6 @@ function EmailScanner() {
             </div>
 
           )}
-
 
           {/* ================= RESULT ================= */}
 
@@ -573,7 +568,6 @@ function EmailScanner() {
 
               </div>
 
-
               {/* ================= CONFIDENCE ================= */}
 
               <div className="confidence-box">
@@ -622,7 +616,6 @@ function EmailScanner() {
                 </div>
 
               </div>
-
 
               {/* ================= ANALYSIS DETAILS ================= */}
 
@@ -721,7 +714,6 @@ function EmailScanner() {
 
         </section>
 
-
         {/* ================= SECURITY FEATURES ================= */}
 
         <section className="scanner-features">
@@ -748,7 +740,6 @@ function EmailScanner() {
 
           </div>
 
-
           <div className="feature-item">
 
             <div className="feature-icon">
@@ -770,7 +761,6 @@ function EmailScanner() {
             </div>
 
           </div>
-
 
           <div className="feature-item">
 

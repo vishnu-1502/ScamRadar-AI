@@ -1,9 +1,5 @@
-const API_BASE_URL = "http://127.0.0.1:5000/api";
-
-
-// ==========================
-// Register User
-// ==========================
+const API_BASE_URL =
+  `${import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:5000"}/api`;
 
 export const registerUser = async (userData) => {
   const response = await fetch(`${API_BASE_URL}/auth/register`, {
@@ -22,11 +18,6 @@ export const registerUser = async (userData) => {
 
   return data;
 };
-
-
-// ==========================
-// Login User
-// ==========================
 
 export const loginUser = async (userData) => {
   const response = await fetch(`${API_BASE_URL}/auth/login`, {

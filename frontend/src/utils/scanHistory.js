@@ -1,9 +1,5 @@
-const API_BASE_URL = "http://127.0.0.1:5000/api";
-
-
-// ==========================
-// Get Current User
-// ==========================
+const API_BASE_URL =
+  `${import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:5000"}/api`;
 
 function getCurrentUser() {
   try {
@@ -19,11 +15,6 @@ function getCurrentUser() {
     return null;
   }
 }
-
-
-// ==========================
-// Get Scan History
-// ==========================
 
 export async function getScanHistory() {
   try {
@@ -41,19 +32,12 @@ export async function getScanHistory() {
       throw new Error("Failed to fetch scan history.");
     }
 
-    const history = await response.json();
-
-    return history;
+    return await response.json();
   } catch (error) {
     console.error("Error fetching scan history:", error);
     return [];
   }
 }
-
-
-// ==========================
-// Save Scan
-// ==========================
 
 export async function saveScan(scan) {
   try {
@@ -64,51 +48,34 @@ export async function saveScan(scan) {
       return null;
     }
 
-    const response = await fetch(
-      `${API_BASE_URL}/history/save`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userEmail: user.email,
-          type: scan.type,
-          target: scan.target,
-          prediction: scan.prediction,
-          confidence: scan.confidence,
-        }),
-      }
-    );
+    const response = await fetch(`${API_BASE_URL}/history/save`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userEmail: user.email,
+        type: scan.type,
+        target: scan.target,
+        prediction: scan.prediction,
+        confidence: scan.confidence,
+      }),
+    });
 
     if (!response.ok) {
       throw new Error("Failed to save scan.");
     }
 
-    const data = await response.json();
-
-    return data;
+    return await response.json();
   } catch (error) {
     console.error("Error saving scan history:", error);
     return null;
   }
 }
 
-
-// ==========================
-// Clear Scan History
-// ==========================
-
 export async function clearScanHistory() {
-  console.log(
-    "Clear scan history is not implemented for MongoDB yet."
-  );
+  console.log("Clear scan history is not implemented for MongoDB yet.");
 }
-
-
-// ==========================
-// Get Dashboard Statistics
-// ==========================
 
 export async function getScanStats() {
   try {
@@ -118,8 +85,7 @@ export async function getScanStats() {
 
     const safeContent = history.filter(
       (scan) =>
-        scan.prediction === "HAM" ||
-        scan.prediction === "BENIGN"
+        scan.prediction === "HAM" || scan.prediction === "BENIGN"
     ).length;
 
     const threatsDetected = history.filter(
@@ -134,10 +100,7 @@ export async function getScanStats() {
       totalScans,
       safeContent,
       threatsDetected,
-      lastScan:
-        history.length > 0
-          ? history[0].timestamp
-          : null,
+      lastScan: history.length > 0 ? history[0].timestamp : null,
     };
   } catch (error) {
     console.error("Error calculating scan statistics:", error);
