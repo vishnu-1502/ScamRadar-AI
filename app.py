@@ -7,13 +7,7 @@ from routes.email_routes import email_bp
 from routes.auth_routes import auth_bp
 from routes.history_routes import history_bp
 
-
 app = Flask(__name__)
-
-
-# ==========================
-# CORS CONFIGURATION
-# ==========================
 
 CORS(
     app,
@@ -22,17 +16,13 @@ CORS(
             "origins": [
                 "http://localhost:5173",
                 "http://127.0.0.1:5173",
+                "https://scam-radar-ai.vercel.app",
             ]
         }
     },
     methods=["GET", "POST", "OPTIONS"],
     allow_headers=["Content-Type"],
 )
-
-
-# ==========================
-# REGISTER BLUEPRINTS
-# ==========================
 
 app.register_blueprint(url_bp)
 app.register_blueprint(sms_bp)
@@ -41,10 +31,6 @@ app.register_blueprint(auth_bp)
 app.register_blueprint(history_bp)
 
 
-# ==========================
-# HOME ROUTE
-# ==========================
-
 @app.route("/")
 def home():
     return {
@@ -52,10 +38,6 @@ def home():
         "status": "Running Successfully"
     }
 
-
-# ==========================
-# START SERVER
-# ==========================
 
 if __name__ == "__main__":
     app.run(debug=True)
