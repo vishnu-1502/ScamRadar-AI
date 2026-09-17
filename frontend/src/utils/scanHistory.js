@@ -85,7 +85,8 @@ export async function getScanStats() {
 
     const safeContent = history.filter(
       (scan) =>
-        scan.prediction === "HAM" || scan.prediction === "BENIGN"
+        scan.prediction === "HAM" ||
+        scan.prediction === "BENIGN"
     ).length;
 
     const threatsDetected = history.filter(
@@ -93,6 +94,7 @@ export async function getScanStats() {
         scan.prediction === "SPAM" ||
         scan.prediction === "PHISHING" ||
         scan.prediction === "MALICIOUS" ||
+        scan.prediction === "MALWARE" ||
         scan.prediction === "DEFACEMENT"
     ).length;
 
